@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "xaml_write_datatrigger/1.0.0": {
+        "runtime": {
+          "xaml_write_datatrigger.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "xaml_write_datatrigger/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

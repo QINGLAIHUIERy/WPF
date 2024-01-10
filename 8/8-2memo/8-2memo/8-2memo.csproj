@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <RootNamespace>_8_2memo</RootNamespace>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="pic\add.png" />
+    <None Remove="pic\delete.png" />
+    <None Remove="pic\modify.png" />
+    <None Remove="pic\search.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.77" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="pic\add.png" />
+    <Resource Include="pic\delete.png" />
+    <Resource Include="pic\modify.png" />
+    <Resource Include="pic\search.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="txt\" />
+  </ItemGroup>
+
+</Project>

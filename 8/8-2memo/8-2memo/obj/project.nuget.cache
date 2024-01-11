@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "mueH8yM1fSv4psOzS2rc04iVaUFI2bvXtuHSS+l6lauxXvK+wLksu4fK979v05vfV3fAVLAsOkVy5XkHRZYcfg==",
+  "dgSpecHash": "Tot3BNsqiY5dIFdM9oO5+FCC7WLODSEHzH653xV1iSR961NQNRNpyC5tOaF9mN7Mej9kl8oJCX4wRB9kRiJOcg==",
   "success": true,
-  "projectFilePath": "G:\\WPF\\8\\8-2memo\\8-2memo\\8-2memo.csproj",
+  "projectFilePath": "E:\\WPF\\8\\8-2memo\\8-2memo\\8-2memo.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\12057\\.nuget\\packages\\microsoft.xaml.behaviors.wpf\\1.1.77\\microsoft.xaml.behaviors.wpf.1.1.77.nupkg.sha512"
+    "C:\\Users\\XGogh\\.nuget\\packages\\microsoft.xaml.behaviors.wpf\\1.1.77\\microsoft.xaml.behaviors.wpf.1.1.77.nupkg.sha512"
   ],
   "logs": []
 }

@@ -50,19 +50,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\12057\\.nuget\\packages\\": {}
+    "C:\\Users\\XGogh\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "G:\\WPF\\8\\8-2memo\\8-2memo\\8-2memo.csproj",
+      "projectUniqueName": "E:\\WPF\\8\\8-2memo\\8-2memo\\8-2memo.csproj",
       "projectName": "8-2memo",
-      "projectPath": "G:\\WPF\\8\\8-2memo\\8-2memo\\8-2memo.csproj",
-      "packagesPath": "C:\\Users\\12057\\.nuget\\packages\\",
-      "outputPath": "G:\\WPF\\8\\8-2memo\\8-2memo\\obj\\",
+      "projectPath": "E:\\WPF\\8\\8-2memo\\8-2memo\\8-2memo.csproj",
+      "packagesPath": "C:\\Users\\XGogh\\.nuget\\packages\\",
+      "outputPath": "E:\\WPF\\8\\8-2memo\\8-2memo\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\12057\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\XGogh\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

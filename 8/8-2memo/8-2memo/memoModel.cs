@@ -26,6 +26,16 @@ namespace _8_2memo
                 OnPropertyChanged("Completed");
             }
         }
+        private bool _selected;
+        public bool Selected
+        {
+            get { return _selected; }
+            set
+            {
+                _selected = value;
+                OnPropertyChanged("Selected");
+            }
+        }
 
         public event PropertyChangedEventHandler? PropertyChanged;
         protected virtual void OnPropertyChanged(string propertyName)

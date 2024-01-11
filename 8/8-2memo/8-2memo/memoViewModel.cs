@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -63,7 +64,7 @@ namespace _8_2memo
             // 数据备份
             MemoCollection =
             [
-                new memoModel() { ID = 1, _event = "学习WPF", _type = "学习", _reminder_time = "2024-1-20"},
+                new memoModel() { ID = 1, _event = "学习WPF", _type = "学习", _reminder_time = "2024-1-20",Selected=true},
                 new memoModel() { ID = 2, _event = "出门拍照", _type = "娱乐", _reminder_time = "2024-1-20",Completed=true},
                 new memoModel() { ID = 3, _event = "完成练手项目8-2", _type = "工作", _reminder_time = "2024-1-20"},
             ];
@@ -78,27 +79,51 @@ namespace _8_2memo
         bool isCanExec = true;
         public ICommand MyCommand => new MyCommand(MyAction,MyCanExec);
 
-        //计数器
+        // 计数器
         private int myID = 3;
+        // 
+        List<int> ints = new List<int>();
         private void MyAction(object pramparameter)
         {
+            // 添加新数据
             if (bool.Parse(pramparameter.ToString()))
             {
                 myID++;
                 // 点击添加按钮后增加一行新数据，ID自增长
                 memoData.Add(new memoModel() { ID = myID });
             }
-            else if (!bool.Parse(pramparameter.ToString()))
+            // 删除选中数据
+            else
             {
-                // 需实现删除选定行
-                // 目前为删除第一行
-                memoData.RemoveAt(0);
+                // 倒序遍历，删除数据组中选中的列
+                for (int i = memoData.Count-1; i >= 0; i--)
+                {
+                    if (memoData[i].Selected)
+                    {
+                        memoData.RemoveAt(i);
+                    }
+                }
             }
         }
         private bool MyCanExec(object arg)
         {
             return isCanExec;
         }
+        #endregion
+
+        #region 全选功能
+        public ICommand SelectAllCommand => new SearchCommand(SelectAllAction, MyCanExec);
+
+        bool _selectAll = true;
+        private void SelectAllAction(object obj)
+        {
+            foreach (var item in memoData)
+            {
+                item.Selected = _selectAll;
+            }
+            _selectAll = !_selectAll;
+        }
+
         #endregion
 
         #region 查找部分
@@ -116,18 +141,22 @@ namespace _8_2memo
             set {  text_Filter = value; }
         }
 
-
         private void SearchAction(object obj)
+        {           
+            Filter(text_Filter);            
+        }
+        // 过滤器
+        private void Filter(string text_Filter)
         {
+            // 重新绑定数据
             memoData = new ObservableCollection<memoModel>(MemoCollection);
             RaisePropertyChanged(nameof(memoData));
             if (text_Filter is not null)
             {
-                //item.Completed = true;
                 var temp = memoData.Where(p => p._event.Contains(text_Filter) || p._type.Contains(text_Filter) || p._reminder_time.Contains(text_Filter));
                 memoData = new ObservableCollection<memoModel>(temp);
                 RaisePropertyChanged(nameof(memoData));
-            }               
+            }          
         }
         #endregion
 
@@ -137,27 +166,15 @@ namespace _8_2memo
         public ICommand SelectCommand => new SearchCommand(SelectAction, MyCanExec);
         private void SelectAction(object obj)
         {
-            // 重新绑定原始数据
-            memoData = new ObservableCollection<memoModel>(MemoCollection);
+            Filter(text_Filter);
+            // 临时变量，获取所有已完成/未完成的数据
+            var temp = memoData.Where(p => p.Completed == _select);
+            // 将已完成的数据赋值给memoData
+            memoData = new ObservableCollection<memoModel>(temp);
+            // 通知UI，memoData数据已经更新
             RaisePropertyChanged(nameof(memoData));
-            if (_select)
-            {
-                // 临时变量，获取所有已完成的数据
-                var temp = memoData.Where(p=>p.Completed == true);
-                // 将已完成的数据赋值给memoData
-                memoData = new ObservableCollection<memoModel>(temp);
-                // 通知UI，memoData数据已经更新
-                RaisePropertyChanged(nameof(memoData));
-                // 将复选框状态置反，使得下次点击时进行不同操作
-                _select = !_select;
-            }
-            else
-            {
-                var temp = memoData.Where(p => p.Completed == false);
-                memoData = new ObservableCollection<memoModel>(temp);
-                RaisePropertyChanged(nameof(memoData));
-                _select = !_select;
-            }
+            // 将复选框状态置反，使得下次点击时进行不同操作
+            _select = !_select;
         }
         #endregion
 

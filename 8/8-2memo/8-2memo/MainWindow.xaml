@@ -68,16 +68,8 @@
             <!--是否完成-->
             <CheckBox Grid.Column="2" Width="100" Content="是否完成" Command="{Binding SelectCommand}" Style="{StaticResource checkbox_style}"/>
 
-            <!--添加-->
-            <Button Grid.Column="4" Command="{Binding MyCommand}" CommandParameter="true" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15">
-                <WrapPanel>
-                    <Image Source="/pic/add.png" Width="15"/>
-                    <TextBlock Text="添加" VerticalAlignment="Center"/>
-                </WrapPanel>
-            </Button>
-
             <!--查询按钮-->
-            <Button Grid.Column="5" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" Command="{Binding SearchCommand}">
+            <Button Grid.Column="4" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" Command="{Binding SearchCommand}">
                 <WrapPanel>
                     <Image Source="/pic/search.png" Width="15"/>
                     <TextBlock Text="查询" VerticalAlignment="Center"/>
@@ -102,22 +94,39 @@
                     <DataGridTextColumn Header="类型" Width="1*" Binding="{Binding _type}" ElementStyle="{StaticResource dgStyle}"/>
                     <DataGridTextColumn Header="提醒时间" Binding="{Binding _reminder_time}" Width="1*" ElementStyle="{StaticResource dgStyle}"/>
                     <DataGridCheckBoxColumn Header="是否完成" Binding="{Binding Completed,Mode=TwoWay}" Width="Auto"/>
+                    <DataGridCheckBoxColumn Header="选择" Binding="{Binding Selected,Mode=TwoWay}" Width="Auto"/>
 
-                    <DataGridTemplateColumn>
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                    <!--<Button Content="编 辑"  Tag="{Binding ID}" Command="{Binding EditCommand}"/>-->
-                                    <Button Content="删 除" Tag="{Binding ID}" Command="Delete" />
-                                </StackPanel>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
 
                 </DataGrid.Columns>
 
             </DataGrid>
         </Grid>
-        
+
+        <Grid Grid.Row="2" Margin="20 0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="80"/>
+            </Grid.ColumnDefinitions>
+            
+            <!--全选-->
+            <CheckBox Grid.Column="0" Width="80" Content="全选" Command="{Binding SelectAllCommand}" Style="{StaticResource checkbox_style}"/>
+            
+            <!--添加-->
+            <Button Grid.Column="1" Command="{Binding MyCommand}" CommandParameter="true" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15">
+                <WrapPanel>
+                    <Image Source="/pic/add.png" Width="15"/>
+                    <TextBlock Text="添加" VerticalAlignment="Center"/>
+                </WrapPanel>
+            </Button>
+
+            <!--删除-->
+            <Button Grid.Column="2" Command="{Binding MyCommand}" CommandParameter="false" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15">
+                <WrapPanel>
+                    <Image Source="/pic/delete.png" Width="15"/>
+                    <TextBlock Text="删除" VerticalAlignment="Center"/>
+                </WrapPanel>
+            </Button>
+        </Grid>
     </Grid>
 </Window>
